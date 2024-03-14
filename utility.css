@@ -29,6 +29,9 @@
 .m1{
   margin: 3px;
 }
+.m2{
+
+}
 .gap1{
   gap: 15px;
 }
@@ -45,8 +48,18 @@
   padding-left: 10px;
   padding-right: 10px;
 }
+.p5{
+  padding-top: 15px;
+  padding-left: 20px;
+}
+.p6{
+  padding-left: 20px;
+}
 .color-white{
   color:white;
+}
+.color-gray2{
+  color: #929292;
 }
 .roboto-thin {
   font-family: "Roboto", sans-serif;
