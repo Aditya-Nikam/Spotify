@@ -66,3 +66,9 @@
   font-weight: 700;
   font-style: normal;
 }
+
+.roboto-thin-small {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
