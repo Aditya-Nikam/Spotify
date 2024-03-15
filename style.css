@@ -49,13 +49,13 @@ body::-webkit-scrollbar {
 
 .library img {
     width: 22px;
-
 }
 
 
 .foot {
 
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     grid-template-columns: 5vw 11vw 8vw;
     grid-template-rows: 5vh 5vh;
     align-items: center;
@@ -69,28 +69,41 @@ body::-webkit-scrollbar {
 .foot a {
     padding-left: 15px;
     text-decoration: none;
+    padding: 15px;
     color: beige;
     font-weight: 100;
     font-size: small;
 
 }
 .langbtn{
-    border: 1px solid beige;
-    display: inline-block;
+    border: 1px solid hsl(0, 0%, 57%);
+    display: flex;
+    position: relative;
     border-radius: 50px;
     margin-left: 20px;
+    align-items: center;
 }
 .langbtn p{
-    font-size:medium;
+    font: size 17px;;
+    position: relative;
+    bottom: 4px;
 }
 .lang{
     position:absolute;
     bottom: 50px;
 }
+
+.langbtn:hover{
+    border: 1px solid white;
+}
+.langbtn:hover p{
+    font-size: 18px;
+}
 /* Right */
 .header{
     justify-content: space-between;
     background-color: rgb(12, 12, 12);
+    height: 66px;
 }
 
 .header > *{
@@ -109,18 +122,20 @@ body::-webkit-scrollbar {
 .signup{
     width: 100px;
     height: 50px;
-    border: 1px solid var(--gray);
-    font-size: medium;
+    border: 1px solid rgb(12, 12, 12);
+    background-color: rgb(12, 12, 12);
+    font-size: 14px;
     margin-right: 10px;
     
 }
 .login{
     width: 110px;
     height: 50px;
-    font-size: medium;
+    font-size: 14px;
     border: 1px solid white;
     border-radius: 50px;
     background-color: white;
+    
 }
 
 /* Play list */
@@ -128,12 +143,19 @@ body::-webkit-scrollbar {
     /* background: linear-gradient(to bottom, rgba(47, 47, 47, 0.5) 0%, rgba(18, 18, 18, 0.5) 100%); */
     /* height: 50vh; */
     margin-top: 15px;
+    min-height: 90vh;
 }
 .card-container{
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
     padding: 15px;
+    max-height: 100vh;
+    overflow-y: scroll;
+    /* stroke-width: 10px; */
+}
+.card-container::-webkit-scrollbar {
+    display: none;
 }
 .card{
     /* border: 2px solid white; */
@@ -154,8 +176,22 @@ body::-webkit-scrollbar {
 }
 .card .play{
     position: absolute;
-    width: 70px;
-    bottom: 100px;
+    width: 60px;
+    bottom: 95px;/* after bottom 100px*/
     right:15px;
-    visibility: hidden; 
+    /* visibility: hidden;  */
+    opacity: 0; /*after opacity =1*/
+    transition:all 0.3s ease-in;
+}
+
+.login:hover{
+    /* font-weight:bolder ; */
+    font-size: 16px;
+}
+.signup:hover{
+    font-size: 16px;
+}
+.card:hover .play{
+    opacity: 1;
+    bottom: 100px;
 }
