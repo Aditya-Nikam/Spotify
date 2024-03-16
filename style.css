@@ -409,7 +409,7 @@ p {
         width: 29px;
     }
 
-    .timevol {
+    .volume {
         display: flex;
         justify-content: space-evenly;
         align-items: center;
@@ -491,7 +491,18 @@ p {
     .library{
         height: 85vh;
     }
-
+    .volume {
+        position:absolute;
+        bottom:-50px;
+    }
+    .volume img{
+        width:30px
+    }
+    .songtime{
+        position:absolute;
+        top:65px
+    
+    }
     .left{ 
         width: 100vw;
     }

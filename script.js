@@ -46,7 +46,7 @@ function calculateSongProgress(currentTime, duration) {
 
 
 async function getSongs() {
-    let a = await fetch("http://127.0.0.1:5500/songs/")
+    let a = await fetch("https://github.com/AdiNik07/Spotify/blob/master/songs/")
     let response = await a.text()
 
 
@@ -65,7 +65,7 @@ async function getSongs() {
 }
 
 async function getimages() {
-    let a = await fetch("http://127.0.0.1:5500/img/")
+    let a = await fetch("https://github.com/AdiNik07/Spotify/blob/master/img/")
     let response = await a.text()
     let div = document.createElement("div")
     div.innerHTML = response;
