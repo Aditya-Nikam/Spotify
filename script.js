@@ -46,7 +46,7 @@ function calculateSongProgress(currentTime, duration) {
 
 
 async function getSongs() {
-    let a = await fetch("/songs/")
+    let a = await fetch("https://adityanikam.freewebhostmost.com/songs/")
     let response = await a.text()
 
 
@@ -65,7 +65,7 @@ async function getSongs() {
 }
 
 async function getimages() {
-    let a = await fetch("/img/")
+    let a = await fetch("https://adityanikam.freewebhostmost.com/img/")
     let response = await a.text()
     let div = document.createElement("div")
     div.innerHTML = response;
