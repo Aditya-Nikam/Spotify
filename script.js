@@ -176,6 +176,14 @@ async function playMusic(track){
         audio.currentTime=(audio.duration * percent );
     })
 
+    document.querySelector(".hamburger").addEventListener("click",()=>{
+        document.querySelector(".left").style.left="0%"
+        document.querySelector(".left").style.display="inline"
+    })
+
+    document.querySelector(".close").addEventListener("click",()=>{
+        document.querySelector(".left").style.left="-120%"
+    })
 
 
 })()
