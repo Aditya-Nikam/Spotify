@@ -3,6 +3,7 @@ console.log("Let write js")
 
 const jsmediatags = window.jsmediatags;
 let audio = new Audio()
+let songs;
 
 class Artistobj {
     constructor(song_name, song_url, artist_name, img_url) {
@@ -107,7 +108,7 @@ async function playMusic(track){
 
 (async function main() {
     let arr = []
-    let songs = await getSongs()
+    songs = await getSongs()
     // console.log(songs)
 
     let images = await getimages()
@@ -185,5 +186,55 @@ async function playMusic(track){
         document.querySelector(".left").style.left="-120%"
     })
 
+    prev.addEventListener("click",()=>{
+        let index = songs.indexOf(audio.currentSrc);
+        if(index>0){
+            let track = songs[index-1].split("/").slice(-1)[0].split(".").slice(0)[0]
+            track=track.replaceAll("%20"," ")
+            playMusic(track)
+        }else{
+            let track = songs[songs.length-1].split("/").slice(-1)[0].split(".").slice(0)[0]
+            track=track.replaceAll("%20"," ")
+            playMusic(track)
+        }
+    })
 
+    next.addEventListener("click",()=>{
+        let index = songs.indexOf(audio.currentSrc);
+        if(index<songs.length-1){
+            let track = songs[index+1].split("/").slice(-1)[0].split(".").slice(0)[0]
+            track=track.replaceAll("%20"," ")
+            playMusic(track)
+        }else{
+            let track = songs[0].split("/").slice(-1)[0].split(".").slice(0)[0]
+            track=track.replaceAll("%20"," ")
+            playMusic(track)
+        }
+    })
+
+    prev1.addEventListener("click",()=>{
+        let index = songs.indexOf(audio.currentSrc);
+        if(index>0){
+            let track = songs[index-1].split("/").slice(-1)[0].split(".").slice(0)[0]
+            track=track.replaceAll("%20"," ")
+            playMusic(track)
+        }else{
+            let track = songs[songs.length-1].split("/").slice(-1)[0].split(".").slice(0)[0]
+            track=track.replaceAll("%20"," ")
+            playMusic(track)
+        }
+    })
+
+    next1.addEventListener("click",()=>{
+        let index = songs.indexOf(audio.currentSrc);
+        if(index<songs.length-1){
+            let track = songs[index+1].split("/").slice(-1)[0].split(".").slice(0)[0]
+            track=track.replaceAll("%20"," ")
+            playMusic(track)
+        }else{
+            let track = songs[0].split("/").slice(-1)[0].split(".").slice(0)[0]
+            track=track.replaceAll("%20"," ")
+            playMusic(track)
+        }
+    })
 })()
