@@ -1,4 +1,4 @@
-console.log("Let write js")
+
 
 
 const jsmediatags = window.jsmediatags;
@@ -92,10 +92,7 @@ function getArtist(song) {
     });
 }
 async function playMusic(track){
-    // let audio = new Audio("/songs/"+track+".mp3")
-    // console.log("/songs/"+track+".mp3")
     audio.src= "/songs/" + track + ".mp3"
-    console.log("/songs/" + track + ".mp3")
     play.src='svg/pause.svg'
 
     let div=document.querySelector(".songinfo")
@@ -109,10 +106,8 @@ async function playMusic(track){
 (async function main() {
     let arr = []
     songs = await getSongs()
-    // console.log(songs)
 
     let images = await getimages()
-    // console.log(images)
 
     for (const song of songs) {
         for (const img of images) {
@@ -120,7 +115,6 @@ async function playMusic(track){
             let imgname = img.split("/img/")[1].split(".jpg")[0]
             if (sname == imgname) {
                 let artist = await getArtist(song)
-                // console.log(artist)
                 arr.push(new Artistobj(artist.title, song, artist.artist, img))
 
                 let div = document.querySelector(".left-playlist")
@@ -145,12 +139,20 @@ async function playMusic(track){
             }
         }
     }
-    console.log(document.querySelector(".left-playlist"))
-    Array.from(document.querySelector(".left-playlist").getElementsByTagName("h3")).forEach(e=>{
+    // console.log(document.querySelector(".left-playlist"))
+    Array.from(document.querySelectorAll(".left-card")).forEach(e=>{
        e.addEventListener( 'click', ()=>{
-        playMusic(e.innerHTML.trim())
+            let track = e.querySelector("h3").innerHTML.trim()
+            playMusic(track)
        })
     })
+    // console.log(document.querySelector(".card-container"))
+    Array.from(document.querySelectorAll(".card")).forEach(e=>{
+        e.addEventListener( 'click', ()=>{
+            let track = e.querySelector("h3").innerHTML.trim()
+            playMusic(track)
+        })
+     })
 
     play.addEventListener("click",()=>{
         if(audio.paused){
@@ -173,7 +175,6 @@ async function playMusic(track){
     document.querySelector(".seekbar").addEventListener("click",(e)=>{
         let percent =e.offsetX/e.target.getBoundingClientRect().width;
         document.querySelector(".circle").style.left= percent*100+"%";
-        // console.log((e.offsetX/e.target.getBoundingClientRect().width)*100)
         audio.currentTime=(audio.duration * percent );
     })
 
@@ -235,6 +236,26 @@ async function playMusic(track){
             let track = songs[0].split("/").slice(-1)[0].split(".").slice(0)[0]
             track=track.replaceAll("%20"," ")
             playMusic(track)
+        }
+    })
+
+    document.querySelector(".range").addEventListener("change",(e)=>{
+        audio.volume=parseInt(e.target.value)/100
+        if(e.target.value==0){
+            document.querySelector(".volume").getElementsByTagName("img")[0].src="svg/volumemute.svg"
+        }else if(e.target.value<=50){
+            document.querySelector(".volume").getElementsByTagName("img")[0].src="svg/volumelow.svg"
+        }else if(e.target.value>50){
+            document.querySelector(".volume").getElementsByTagName("img")[0].src="svg/volumehigh.svg"
+        }
+    })
+    document.querySelector(".volume").getElementsByTagName("img")[0].addEventListener("click",()=>{
+        if(audio.volume>0){
+            audio.volume=0
+            document.querySelector(".volume").getElementsByTagName("img")[0].src="svg/volumemute.svg"
+        }else{
+            document.querySelector(".volume").getElementsByTagName("img")[0].src="svg/volumelow.svg"
+            audio.volume=(document.querySelector(".range").value)/100
         }
     })
 })()
