@@ -1,74 +1,99 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-.border{
-    border: 2px solid rgb(255, 255, 255);
+
+/* General Utilities */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex; /* Flex container for left and right sections */
+    width: 100%; /* Full width */
+    height: 100vh; /* Full height */
 }
-.flex{
+
+.flex {
     display: flex;
 }
-.justify-center{
-  justify-content: center;
-}
-.align-items-center{
-  align-items: center;
-}
-.invert{
-  filter: invert(1);
-}
-.bg-black{
- background-color: black;
-}
-.bg-gray{
-  background-color: #121212;
-}
-.rounded{
-  border-radius: 10px;
-}
-.p1{
-  padding: 20px;
-}
-.m1{
-  margin: 3px;
-}
-.m2{
 
+.justify-center {
+    justify-content: center;
 }
-.gap1{
-  gap: 15px;
+
+.align-items-center {
+    align-items: center;
 }
-.p2{
-  padding-top: 5px;
-  padding-bottom: 5px;
+
+.border {
+    border: 2px solid rgb(255, 255, 255);
 }
-.p3{
-  padding-left: 5px;
+
+.invert {
+    filter: invert(1);
 }
-.p4{
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
+
+.rounded {
+    border-radius: 10px;
 }
-.p5{
-  padding-top: 15px;
-  padding-left: 20px;
+
+/* Padding and Margins */
+.p1 {
+    padding: 20px;
 }
-.p6{
-  padding-left: 20px;
+
+.p2 {
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
-.color-white{
-  color:white;
+
+.p3 {
+    padding-left: 5px;
 }
-.color-gray2{
-  color: #929292;
+
+.m1 {
+    margin: 10px 0;
 }
+
+.gap1 {
+    gap: 15px;
+}
+
+/* Colors */
+.bg-black {
+    background-color: black;
+}
+
+.bg-gray {
+    background-color: #121212;
+}
+
+.color-white {
+    color: white;
+}
+
+.color-gray2 {
+    color: #929292;
+}
+
+/* Fonts */
 .roboto-thin {
-  font-family: "Roboto", sans-serif;
-  font-weight: 700;
-  font-style: normal;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 .roboto-thin-small {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Layout Fixes */
+.left-sidebar {
+    flex: 0 0 20%; /* Fixed width for the sidebar */
+    background-color: #121212; /* Sidebar background color */
+    min-height: 100vh; /* Full height for the sidebar */
+}
+
+.main-content {
+    flex: 1; /* Remaining space for the main content */
+    background-color: black; /* Main content background color */
+    min-height: 100vh; /* Full height for the main content */
 }
