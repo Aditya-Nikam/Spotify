@@ -46,39 +46,17 @@ function calculateSongProgress(currentTime, duration) {
 
 
 async function getSongs() {
-    let a = await fetch("https://adityanikam.freewebhostmost.com/songs/")
-    let response = await a.text()
-
-
-    let div = document.createElement("div")
-    div.innerHTML = response;
-    let as = div.getElementsByTagName("a")
-
-    let songs = []
-    for (let i = 0; i < as.length; i++) {
-        const element = as[i];
-        if (element.href.endsWith(".mp3")) {
-            songs.push(element.href)
-        }
-    }
-    return songs
+    let response = await fetch("./songs.json");
+    let songs = await response.json();
+    console.log(songs);
 }
 
-async function getimages() {
-    let a = await fetch("https://adityanikam.freewebhostmost.com/img/")
-    let response = await a.text()
-    let div = document.createElement("div")
-    div.innerHTML = response;
-    let as = div.getElementsByTagName("a")
-    let images = []
-    for (let i = 0; i < as.length; i++) {
-        const element = as[i];
-        if (element.href.endsWith(".jpg")) {
-            images.push(element.href)
-        }
-    }
-    return images
+async function getImages() {
+    let response = await fetch("./images.json");
+    let images = await response.json();
+    console.log(images);
 }
+
 function getArtist(song) {
     return new Promise((resolve, reject) => {
         jsmediatags.read(song, {

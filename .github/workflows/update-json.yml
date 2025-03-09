@@ -1,0 +1,32 @@
+name: Update JSON files
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-json:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Generate songs.json and images.json
+        run: |
+          echo "[" > songs.json
+          find songs -name '*.mp3' | sed 's/^/  "/;s/$/",/' >> songs.json
+          echo "]" >> songs.json
+          
+          echo "[" > images.json
+          find img -name '*.jpg' | sed 's/^/  "/;s/$/",/' >> images.json
+          echo "]" >> images.json
+
+      - name: Commit and push
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add songs.json images.json
+          git commit -m "Update JSON files" || echo "No changes to commit"
+          git push
